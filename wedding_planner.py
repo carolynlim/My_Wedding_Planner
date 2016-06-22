@@ -1,7 +1,13 @@
+import smtplib
+from email.mime.text import MIMEText
 score = 0
 guest= None
 guest_list= {}
+email_list= []
 print "Welcome to the wedding guestlist scorecard!"
+username= raw_input("Please enter your google email username \n")
+password= raw_input("Please enter your password \n")
+message= raw_input("Please enter the message for your save the date email \n")
 
 def prompt_user():
 	global guest
@@ -118,6 +124,21 @@ def question8():
 		print "Please enter valid answer"
 		question8()
 
+def send_mail(subject="Please, save the date for our big day!"):
+
+    to = email_list
+    gmail_user = username
+    gmail_pwd = password
+    smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
+    smtpserver.ehlo()
+    smtpserver.starttls()
+    smtpserver.ehlo
+    smtpserver.login(gmail_user, gmail_pwd)
+    header = 'To:' + ", ".join(to) + '\n' + 'From: ' + gmail_user + '\n' + 'Subject: ' + subject + '\n'
+    msg = message
+    smtpserver.sendmail(gmail_user, to, msg)
+    smtpserver.close()
+
 def main():
 	
 	prompt_user()
@@ -144,9 +165,18 @@ while True:
 		score = 0
 		main()
 	else:
-		print "Your guestlist has been populated in the wedding guestlist text file \n"
+		print "Your compiled guestlist have been populated in the wedding guestlist and B list text files \n"
+		print "We will now gather some information on your guests \n"
 		with open("wedding_guestlist.txt", 'w') as f:
 			for key,value in guest_list.items():
 				if value >= 80:
+					f.write('%s\n' % (key))
+					print key
+					email_request= raw_input("Please enter the indicated guest's email \n")
+					email_list.append(email_request)
+					send_mail()
+		with open("wedding_B_list.txt", 'w') as f:
+			for key,value in guest_list.items():
+				if value >= 70 and value<= 79:
 					f.write('%s\n' % (key))
 		exit()
