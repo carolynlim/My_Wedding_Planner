@@ -165,7 +165,7 @@ while True:
 		score = 0
 		main()
 	else:
-		print "Your compiled guestlist have been populated in the wedding guestlist and B list text files \n"
+		print "Your compiled guestlists have been populated in the wedding guestlist and B list text files \n"
 		print "We will now gather some information on your guests \n"
 		with open("wedding_guestlist.txt", 'w') as f:
 			for key,value in guest_list.items():
