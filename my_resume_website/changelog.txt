@@ -1,0 +1,13 @@
+Thank you for choose our template. 
+Here is the change log of latest IAMX version 1.2
+
+1. Added "sendmail.php" file and "email-templates" folder containing a simple email template.
+2. Video introduction section modified with magnific popup.
+3. Removed some files and unused code.
+4. Fixed some issues.
+
+To get all new features use the latest version(currently version 1.2) of this template. 
+If you are using old version please replace all fils with new files.
+
+Thank you.
+Trendy Theme Team.
